@@ -182,6 +182,7 @@
             0,
             0,
             0});
+            this.numRandomHeight.ValueChanged += new System.EventHandler(this.LocationHandler);
             // 
             // label7
             // 
@@ -208,6 +209,7 @@
             0,
             0,
             0});
+            this.numRandomWidth.ValueChanged += new System.EventHandler(this.LocationHandler);
             // 
             // label4
             // 
@@ -229,6 +231,7 @@
             this.numRandomY.Name = "numRandomY";
             this.numRandomY.Size = new System.Drawing.Size(120, 20);
             this.numRandomY.TabIndex = 10;
+            this.numRandomY.ValueChanged += new System.EventHandler(this.LocationHandler);
             // 
             // label5
             // 
@@ -250,6 +253,7 @@
             this.numRandomX.Name = "numRandomX";
             this.numRandomX.Size = new System.Drawing.Size(120, 20);
             this.numRandomX.TabIndex = 8;
+            this.numRandomX.ValueChanged += new System.EventHandler(this.LocationHandler);
             // 
             // label3
             // 
@@ -271,6 +275,7 @@
             this.numFixedY.Name = "numFixedY";
             this.numFixedY.Size = new System.Drawing.Size(120, 20);
             this.numFixedY.TabIndex = 6;
+            this.numFixedY.ValueChanged += new System.EventHandler(this.LocationHandler);
             // 
             // label2
             // 
@@ -292,6 +297,7 @@
             this.numFixedX.Name = "numFixedX";
             this.numFixedX.Size = new System.Drawing.Size(120, 20);
             this.numFixedX.TabIndex = 4;
+            this.numFixedX.ValueChanged += new System.EventHandler(this.LocationHandler);
             // 
             // rdbLocationRandomArea
             // 
@@ -302,6 +308,7 @@
             this.rdbLocationRandomArea.TabIndex = 3;
             this.rdbLocationRandomArea.Text = "Random area";
             this.rdbLocationRandomArea.UseVisualStyleBackColor = true;
+            this.rdbLocationRandomArea.CheckedChanged += new System.EventHandler(this.LocationHandler);
             // 
             // rdbLocationFixed
             // 
@@ -312,6 +319,7 @@
             this.rdbLocationFixed.TabIndex = 2;
             this.rdbLocationFixed.Text = "Fixed location";
             this.rdbLocationFixed.UseVisualStyleBackColor = true;
+            this.rdbLocationFixed.CheckedChanged += new System.EventHandler(this.LocationHandler);
             // 
             // rdbLocationRandom
             // 
@@ -322,6 +330,7 @@
             this.rdbLocationRandom.TabIndex = 1;
             this.rdbLocationRandom.Text = "Random on screen";
             this.rdbLocationRandom.UseVisualStyleBackColor = true;
+            this.rdbLocationRandom.CheckedChanged += new System.EventHandler(this.LocationHandler);
             // 
             // rdbLocationMouse
             // 
@@ -334,6 +343,7 @@
             this.rdbLocationMouse.TabStop = true;
             this.rdbLocationMouse.Text = "Mouse location";
             this.rdbLocationMouse.UseVisualStyleBackColor = true;
+            this.rdbLocationMouse.CheckedChanged += new System.EventHandler(this.LocationHandler);
             // 
             // numDelayFixed
             // 
@@ -351,6 +361,7 @@
             0,
             0,
             0});
+            this.numDelayFixed.ValueChanged += new System.EventHandler(this.DelayHandler);
             // 
             // tslStatus
             // 
@@ -374,6 +385,7 @@
             0,
             0,
             0});
+            this.numDelayRangeMax.ValueChanged += new System.EventHandler(this.DelayHandler);
             // 
             // grpMain
             // 
@@ -413,6 +425,7 @@
             this.rdbClickDoubleRight.TabIndex = 5;
             this.rdbClickDoubleRight.Text = "Right Double";
             this.rdbClickDoubleRight.UseVisualStyleBackColor = true;
+            this.rdbClickDoubleRight.CheckedChanged += new System.EventHandler(this.ClickTypeHandler);
             // 
             // rdbClickDoubleMiddle
             // 
@@ -423,6 +436,7 @@
             this.rdbClickDoubleMiddle.TabIndex = 4;
             this.rdbClickDoubleMiddle.Text = "Middle Double";
             this.rdbClickDoubleMiddle.UseVisualStyleBackColor = true;
+            this.rdbClickDoubleMiddle.CheckedChanged += new System.EventHandler(this.ClickTypeHandler);
             // 
             // rdbClickDoubleLeft
             // 
@@ -433,6 +447,7 @@
             this.rdbClickDoubleLeft.TabIndex = 3;
             this.rdbClickDoubleLeft.Text = "Left Double";
             this.rdbClickDoubleLeft.UseVisualStyleBackColor = true;
+            this.rdbClickDoubleLeft.CheckedChanged += new System.EventHandler(this.ClickTypeHandler);
             // 
             // rdbClickSingleRight
             // 
@@ -443,6 +458,7 @@
             this.rdbClickSingleRight.TabIndex = 2;
             this.rdbClickSingleRight.Text = "Right";
             this.rdbClickSingleRight.UseVisualStyleBackColor = true;
+            this.rdbClickSingleRight.CheckedChanged += new System.EventHandler(this.ClickTypeHandler);
             // 
             // rdbClickSingleMiddle
             // 
@@ -453,6 +469,7 @@
             this.rdbClickSingleMiddle.TabIndex = 1;
             this.rdbClickSingleMiddle.Text = "Middle";
             this.rdbClickSingleMiddle.UseVisualStyleBackColor = true;
+            this.rdbClickSingleMiddle.CheckedChanged += new System.EventHandler(this.ClickTypeHandler);
             // 
             // rdbClickSingleLeft
             // 
@@ -465,6 +482,7 @@
             this.rdbClickSingleLeft.TabStop = true;
             this.rdbClickSingleLeft.Text = "Left";
             this.rdbClickSingleLeft.UseVisualStyleBackColor = true;
+            this.rdbClickSingleLeft.CheckedChanged += new System.EventHandler(this.ClickTypeHandler);
             // 
             // grpControls
             // 
@@ -555,6 +573,7 @@
             0,
             0,
             0});
+            this.numCount.ValueChanged += new System.EventHandler(this.CountHandler);
             // 
             // rdbCount
             // 
@@ -565,6 +584,7 @@
             this.rdbCount.TabIndex = 1;
             this.rdbCount.Text = "Fixed number";
             this.rdbCount.UseVisualStyleBackColor = true;
+            this.rdbCount.CheckedChanged += new System.EventHandler(this.CountHandler);
             // 
             // rdbUntilStopped
             // 
@@ -577,6 +597,7 @@
             this.rdbUntilStopped.TabStop = true;
             this.rdbUntilStopped.Text = "Until stopped";
             this.rdbUntilStopped.UseVisualStyleBackColor = true;
+            this.rdbUntilStopped.CheckedChanged += new System.EventHandler(this.CountHandler);
             // 
             // grpDelay
             // 
@@ -611,6 +632,7 @@
             0,
             0,
             0});
+            this.numDelayRangeMin.ValueChanged += new System.EventHandler(this.DelayHandler);
             // 
             // rdbDelayRange
             // 
@@ -621,6 +643,7 @@
             this.rdbDelayRange.TabIndex = 1;
             this.rdbDelayRange.Text = "Delay range";
             this.rdbDelayRange.UseVisualStyleBackColor = true;
+            this.rdbDelayRange.CheckedChanged += new System.EventHandler(this.DelayHandler);
             // 
             // rdbDelayFixed
             // 
@@ -633,6 +656,7 @@
             this.rdbDelayFixed.TabStop = true;
             this.rdbDelayFixed.Text = "Fixed delay";
             this.rdbDelayFixed.UseVisualStyleBackColor = true;
+            this.rdbDelayFixed.CheckedChanged += new System.EventHandler(this.DelayHandler);
             // 
             // statusStrip1
             // 

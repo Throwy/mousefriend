@@ -38,6 +38,7 @@
             this.ClientSize = new System.Drawing.Size(300, 300);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SelectionForm";
+            this.Opacity = 0.1D;
             this.Text = "SelectionForm";
             this.ResumeLayout(false);
 

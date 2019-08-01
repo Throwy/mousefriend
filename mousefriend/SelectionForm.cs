@@ -50,8 +50,8 @@ namespace mousefriend
             this.MouseMove += HandleMouseMove;
             this.MouseUp += HandleMouseUp;
 
-            this.Left = 0;
-            this.Top = 0;
+            var mostLeft = 0;
+
             var width = 0;
             var height = 0;
             var screens = Screen.AllScreens;
@@ -62,7 +62,14 @@ namespace mousefriend
                     height = screen.Bounds.Height;
                 }
                 width += screen.Bounds.Width;
+                if(screen.Bounds.X < mostLeft)
+                {
+                    mostLeft = screen.Bounds.X;
+                }
             }
+
+            this.Left = mostLeft;
+            this.Top = 0;
 
             this.Width = width;
             this.Height = height;
