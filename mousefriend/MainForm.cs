@@ -10,6 +10,9 @@ namespace mousefriend
         private Keys hotkey;
         private Win32.fsModifiers hotkeyModifiers;
 
+        private string settingsFilePath = Application.UserAppDataPath + "\\settings.dat";
+        
+
         public MainForm()
         {
             InitializeComponent();
@@ -17,7 +20,7 @@ namespace mousefriend
 
         private void SaveSettings()
         {
-            using (FileStream fs = File.Open("settings.dat", FileMode.Create))
+            using (FileStream fs = File.Open(settingsFilePath, FileMode.Create))
             {
                 using (BinaryWriter w = new BinaryWriter(fs))
                 {
@@ -106,9 +109,9 @@ namespace mousefriend
 
         private void LoadSettings()
         {
-            if (File.Exists("settings.dat"))
+            if (File.Exists(settingsFilePath))
             {
-                using (FileStream fs = File.Open("settings.dat", FileMode.Open))
+                using (FileStream fs = File.Open(settingsFilePath, FileMode.Open))
                 {
                     using (BinaryReader r = new BinaryReader(fs))
                     {
