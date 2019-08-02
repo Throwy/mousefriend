@@ -237,19 +237,19 @@ namespace mousefriend
                 //Win32.SendInput(2, input, Marshal.SizeOf(input[0]));
                 Win32.SendInput((uint)inputs.Count, inputs.ToArray(), Marshal.SizeOf(new Win32.INPUT()));
 
-                //int nextDelay = 0;
-                //if (delayType == DelayType.Fixed)
-                //{
-                //    nextDelay = delay;
+                int nextDelay = 0;
+                if (delayType == DelayType.Fixed)
+                {
+                    nextDelay = delay;
 
-                //}
-                //else
-                //{
-                //    nextDelay = rnd.Next(delay, delayRange);
-                //}
+                }
+                else
+                {
+                    nextDelay = rnd.Next(delay, delayRange);
+                }
                 //NextClick?.Invoke(this, new NextClickEventArgs { NextClick = nextDelay });
-                //Thread.Sleep(nextDelay);
-                //remaining--;
+                Thread.Sleep(nextDelay);
+                remaining--;
             }
             Finished?.Invoke(this, null);
         }
