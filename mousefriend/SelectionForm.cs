@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace mousefriend
@@ -24,6 +25,7 @@ namespace mousefriend
         SolidBrush EraserBrush = new SolidBrush(Color.FromArgb(051, 153, 255));
 
         private MainForm instanceRef = null;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public MainForm InstanceRef
         {
             get

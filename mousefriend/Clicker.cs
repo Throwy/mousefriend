@@ -83,6 +83,7 @@ namespace mousefriend
         #endregion
 
         Thread ClickerThread;
+        CancellationTokenSource _cts;
         Random rnd;
 
         public Clicker()
@@ -107,7 +108,7 @@ namespace mousefriend
             //System.Diagnostics.Debug.Print("Count type: {0}, count: {1}", countType, count);
             while (countType == CountType.UntilStopped || remaining > 0)
             {
-                if (!IsAlive)
+                if (_cts.Token.IsCancellationRequested)
                     return;
                 SyncSettings();
                 List<Win32.INPUT> inputs = new List<Win32.INPUT>();
@@ -248,7 +249,8 @@ namespace mousefriend
                     nextDelay = rnd.Next(delay, delayRange);
                 }
                 //NextClick?.Invoke(this, new NextClickEventArgs { NextClick = nextDelay });
-                Thread.Sleep(nextDelay);
+                if (_cts.Token.WaitHandle.WaitOne(nextDelay))
+                    return;
                 remaining--;
             }
             Finished?.Invoke(this, null);
@@ -268,6 +270,7 @@ namespace mousefriend
 
         public void Start()
         {
+            _cts = new CancellationTokenSource();
             ClickerThread = new Thread(Click);
             ClickerThread.IsBackground = true;
             ClickerThread.Start();
@@ -275,10 +278,7 @@ namespace mousefriend
 
         public void Stop()
         {
-            if (ClickerThread != null)
-            {
-                ClickerThread.Abort();
-            }
+            _cts?.Cancel();
         }
 
         private void SyncSettings()
