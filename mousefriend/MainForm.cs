@@ -446,6 +446,18 @@ namespace mousefriend
             }
         }
 
+        private void SetClickingCursor()
+        {
+            IntPtr crossCursor = Win32.LoadCursor(IntPtr.Zero, Win32.IDC_CROSS);
+            IntPtr crossCopy = Win32.CopyIcon(crossCursor);
+            Win32.SetSystemCursor(crossCopy, Win32.OCR_NORMAL);
+        }
+
+        private void RestoreSystemCursor()
+        {
+            Win32.SystemParametersInfo(Win32.SPI_SETCURSORS, 0, IntPtr.Zero, 0);
+        }
+
         private void EnableControls()
         {
             tslStatus.Text = "Ready...";
@@ -454,6 +466,10 @@ namespace mousefriend
             SetEnabled(grpDelay, true);
             SetEnabled(grpCount, true);
             SetButtonText(btnToggle, "Start");
+            if (this.InvokeRequired)
+                this.Invoke(new Action(RestoreSystemCursor));
+            else
+                RestoreSystemCursor();
         }
 
         private void DisableControls()
@@ -464,6 +480,7 @@ namespace mousefriend
             SetEnabled(grpDelay, false);
             SetEnabled(grpCount, false);
             SetButtonText(btnToggle, "Stop");
+            SetClickingCursor();
         }
 
         protected override void WndProc(ref Message m)
@@ -531,6 +548,11 @@ namespace mousefriend
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (clicker.IsAlive)
+            {
+                clicker.Stop();
+                RestoreSystemCursor();
+            }
             SaveSettings();
         }
 

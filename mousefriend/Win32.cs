@@ -84,5 +84,22 @@ namespace mousefriend
         {
             return (y * 65536) / GetSystemMetrics(SystemMetric.CYScreen);
         }
+
+        // Cursor constants
+        public const int IDC_CROSS = 32515;
+        public const uint OCR_NORMAL = 32512;
+        public const uint SPI_SETCURSORS = 0x0057;
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr LoadCursor(IntPtr hInstance, int lpCursorName);
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr CopyIcon(IntPtr hIcon);
+
+        [DllImport("user32.dll")]
+        public static extern bool SetSystemCursor(IntPtr hcur, uint id);
+
+        [DllImport("user32.dll")]
+        public static extern bool SystemParametersInfo(uint uiAction, uint uiParam, IntPtr pvParam, uint fWinIni);
     }
 }
